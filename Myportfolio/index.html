@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARUNESWAR V | Portfolio</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4bb.png" />
+  <style>
+    /* Hero profile floating animation */
+    .float-animate {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-18px); }
+    }
+    /* Fade-in animation for sections */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s cubic-bezier(0.4,0,0.2,1), transform 1s cubic-bezier(0.4,0,0.2,1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+    /* Typewriter effect */
+    .typewriter {
+      display: inline-block;
+      border-right: 2px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: blink-caret 0.75s step-end infinite;
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #fff; }
+    }
+    /* Project card enhanced hover */
+    .project-card {
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s cubic-bezier(0.4,0,0.2,1), rotate 0.4s;
+    }
+    .project-card:hover {
+      transform: scale(1.07) rotate(-2deg);
+      box-shadow: 0 10px 32px 0 rgba(80, 80, 180, 0.18), 0 2px 4px 0 rgba(0,0,0,0.08);
+      z-index: 2;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-cyan-500 to-blue-400 text-gray-900 min-h-screen">
+  <!-- Navbar -->
+  <nav class="w-full bg-white/80 backdrop-blur shadow fixed top-0 left-0 z-50">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+      <span class="font-bold text-2xl tracking-wide text-blue-700">ARUNESWAR V</span>
+      <!-- Hamburger button for mobile -->
+      <button id="nav-toggle" class="md:hidden flex items-center px-3 py-2 border rounded text-blue-700 border-blue-700 focus:outline-none" aria-label="Toggle navigation">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <ul id="nav-menu" class="hidden md:flex space-x-6 font-medium absolute md:static top-16 left-0 w-full md:w-auto bg-white/90 md:bg-transparent shadow md:shadow-none md:rounded-none rounded-b-xl transition-all duration-300">
+        <li><a href="#home" class="block px-6 py-3 md:p-0 hover:text-pink-500 transition nav-link">Home</a></li>
+        <li><a href="#about" class="block px-6 py-3 md:p-0 hover:text-pink-500 transition nav-link">About</a></li>
+        <li><a href="#projects" class="block px-6 py-3 md:p-0 hover:text-pink-500 transition nav-link">Projects</a></li>
+        <li><a href="#contact" class="block px-6 py-3 md:p-0 hover:text-pink-500 transition nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
+    });
+    // Optional: Hide menu on link click (mobile)
+    document.querySelectorAll('#nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        if(window.innerWidth < 768) navMenu.classList.add('hidden');
+      });
+    });
+    // Active nav link on click
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navLinks.forEach(l => l.classList.remove('text-pink-500'));
+        this.classList.add('text-pink-500');
+      });
+    });
+  </script>
+
+  <!-- Home Section -->
+  <section id="home" class="min-h-screen flex flex-col justify-center items-center pt-40 pb-16 fade-in">
+    <div class="bg-blue-400 bg-white/10 backdrop-blur-md rounded-xl p-8 shadow-lg flex flex-col items-center w-full max-w-xl relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/60 via-blue-500/40 to-pink-400/30 pointer-events-none rounded-xl z-0"></div>
+      <img src="photo_2025-01-24_20-49-08.jpg" alt="Profile" class="w-40 h-40 rounded-full shadow-lg border-4 border-white/40 mb-6 float-animate relative z-10" />
+      <h1 class="text-5xl font-extrabold mb-2 drop-shadow-lg text-white relative z-10">ARUNESWAR V</h1>
+      <h2 class="text-2xl text-blue-700 mb-4 font-semibold relative z-10">Web Developer & Designer</h2>
+      <p class="italic text-lg mb-6 text-blue-100 relative z-10"><span id="typewriter" class="typewriter"></span></p>
+      <a href="assets/resume.pdf" download class="bg-gradient-to-r from-cyan-400 to-blue-600 text-white px-8 py-3 rounded-full shadow-lg hover:scale-105 transition font-bold relative z-10">Download Resume</a>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="bg-[url('bg2.jpg')] bg-cover bg-center bg-no-repeat bg-fixed bg-blend-soft-light py-20 bg-white">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h2 class="text-3xl font-bold mb-8 text-center text-blue-700">About Me</h2>
+      <div class="flex flex-col md:flex-row gap-10 items-center">
+        <div class="flex-1">
+          <p class="mb-4 text-lg">I am a passionate web developer with a background in computer science and a keen eye for design. I love building beautiful, user-friendly websites and applications that make a difference.</p>
+          <p class="mb-8 text-lg">My interests include UI/UX, frontend development, and learning new technologies. My goal is to deliver high-quality digital solutions that exceed client expectations.</p>
+        </div>
+        <!-- Skills List -->
+        <div class="flex-1">
+          <h3 class="text-xl font-semibold mb-4 text-purple-600">Key Skills</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-center gap-2 bg-blue-50 rounded-lg px-4 py-2 shadow">
+              <svg class="w-6 h-6 text-orange-500" fill="currentColor" viewBox="0 0 24 24"><path d="M1.5 3l10.5 18L22.5 3h-21z"/></svg>
+              <span>HTML5</span>
+            </div>
+            <div class="flex items-center gap-2 bg-blue-50 rounded-lg px-4 py-2 shadow">
+              <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3l1.89 17.11L12 21l7.11-0.89L21 3H3zm15.09 2l-1.2 13.45L12 19.13l-4.89-0.68L5.91 5h12.18z"/></svg>
+              <span>CSS3</span>
+            </div>
+            <div class="flex items-center gap-2 bg-blue-50 rounded-lg px-4 py-2 shadow">
+              <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1.5 21h21L12 2zm0 3.84L18.93 19H5.07L12 5.84z"/></svg>
+              <span>JavaScript</span>
+            </div>
+            <div class="flex items-center gap-2 bg-blue-50 rounded-lg px-4 py-2 shadow">
+              <svg class="w-6 h-6 text-teal-500" fill="currentColor" viewBox="0 0 24 24"><path d="M2.4 19.6L12 4.8l9.6 14.8H2.4z"/></svg>
+              <span>Tailwind CSS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Timeline / Experience -->
+      <div class="mt-12">
+        <h3 class="text-xl font-semibold mb-4 text-purple-600">Education & Experience</h3>
+        <ol class="relative border-l-4 border-blue-200 ml-4">
+          <li class="mb-10 ml-6">
+            <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full -left-4 ring-4 ring-white">
+              <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 12H9v-2h2v2zm0-4H9V7h2v3z"/></svg>
+            </span>
+            <h4 class="font-bold text-blue-700">B.E. in Computer Science and Engineering, SRM Valliammai Engineering College</h4>
+            <span class="text-sm text-gray-500">2023 - Present</span>
+            <p class="text-gray-700">Developing and maintaining modern web applications for clients in various industries.</p>
+          </li>
+          <li class="ml-6">
+            <span class="absolute flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full -left-4 ring-4 ring-white">
+              <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 12H9v-2h2v2zm0-4H9V7h2v3z"/></svg>
+            </span>
+            <h4 class="font-bold text-purple-700">Higher Secondary, Kalaimagal Viddyalaya Matriculation Higher Secondary School</h4>
+            <span class="text-sm text-gray-500">2021 - 2023</span>
+            <p class="text-gray-700">Graduated with honors, focused on science and mathematics.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 fade-in">
+    <div class="container mx-auto px-6 max-w-6xl">
+      <h2 class="text-3xl font-bold mb-10 text-center text-pink-600">Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Project Card 1 -->
+        <div class="bg-white rounded-xl shadow-lg project-card p-6 flex flex-col border-t-4 border-pink-400 relative overflow-hidden">
+          <img src="technical-6819562_640.webp" alt="Project 1" class="w-full h-40 object-cover rounded mb-4 shadow" />
+          <h3 class="font-bold text-xl mb-2 text-blue-600">Project One</h3>
+          <p class="mb-2 text-gray-700">A brief description of the project, what it does, and tools used.</p>
+          <div class="flex gap-2 mb-2">
+            <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">React</span>
+            <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs">Tailwind</span>
+          </div>
+          <a href="#" class="mt-auto bg-gradient-to-r from-pink-400 to-blue-400 text-white px-4 py-2 rounded-full font-semibold shadow hover:scale-105 transition text-center">View Details</a>
+        </div>
+        <!-- Project Card 2 -->
+        <div class="bg-white rounded-xl shadow-lg project-card p-6 flex flex-col border-t-4 border-purple-400 relative overflow-hidden">
+          <img src="isometric-online-technical-support-concept-with-male-operator-laptop-screen-system-error-chatting-customers-3d-vector-illustration_1284-67996.webp" alt="Project 2" class="w-full h-40 object-cover rounded mb-4 shadow" />
+          <h3 class="font-bold text-xl mb-2 text-blue-600">Project Two</h3>
+          <p class="mb-2 text-gray-700">A brief description of the project, what it does, and tools used.</p>
+          <div class="flex gap-2 mb-2">
+            <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">Vue</span>
+            <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">Tailwind</span>
+          </div>
+          <a href="#" class="mt-auto bg-gradient-to-r from-purple-400 to-blue-400 text-white px-4 py-2 rounded-full font-semibold shadow hover:scale-105 transition text-center">View Details</a>
+        </div>
+        <!-- Project Card 3 -->
+        <div class="bg-white rounded-xl shadow-lg project-card p-6 flex flex-col border-t-4 border-blue-400 relative overflow-hidden">
+          <img src="noctidial-technical-support-online-assistant-user-help-frequently-asked-questions-call-center-worker-cartoon-character-woman-working-hotline_335657-782.webp" alt="Project 3" class="w-full h-40 object-cover rounded mb-4 shadow" />
+          <h3 class="font-bold text-xl mb-2 text-blue-600">Project Three</h3>
+          <p class="mb-2 text-gray-700">A brief description of the project, what it does, and tools used.</p>
+          <div class="flex gap-2 mb-2">
+            <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs">Angular</span>
+            <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">Tailwind</span>
+          </div>
+          <a href="#" class="mt-auto bg-gradient-to-r from-blue-400 to-pink-400 text-white px-4 py-2 rounded-full font-semibold shadow hover:scale-105 transition text-center">View Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="container mx-auto px-6 max-w-lg">
+      <h2 class="text-3xl font-bold mb-6 text-center text-blue-700">Contact</h2>
+      <form class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-2xl shadow-xl p-8 flex flex-col gap-4">
+        <input type="text" placeholder="Name" class="border-2 border-blue-200 rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-pink-400" required />
+        <input type="email" placeholder="Email" class="border-2 border-blue-200 rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-pink-400" required />
+        <textarea placeholder="Message" rows="4" class="border-2 border-blue-200 rounded-2xl p-3 focus:outline-none focus:ring-2 focus:ring-pink-400" required></textarea>
+        <button type="submit" class="bg-gradient-to-r from-blue-500 to-pink-500 text-white px-6 py-3 rounded-full font-bold shadow hover:scale-105 transition">Send Message</button>
+      </form>
+      <!-- Social Media Icons (optional, using Heroicons CDN) -->
+      <div class="flex justify-center gap-6 mt-8">
+        <a href="https://x.com/home" aria-label="Twitter" class="text-gray-400 hover:text-blue-500 transition">
+          <!-- Heroicon: Twitter -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-7 h-7">
+            <path d="M8.29 20c7.547 0 11.675-6.155 11.675-11.49 0-.175 0-.349-.012-.522A8.18 8.18 0 0022 5.92a8.19 8.19 0 01-2.357.631A4.118 4.118 0 0021.448 4.1a8.224 8.224 0 01-2.605.977A4.107 4.107 0 0016.616 3c-2.266 0-4.102 1.823-4.102 4.073 0 .32.036.634.106.934C8.728 7.87 5.8 6.13 3.671 3.149a4.025 4.025 0 00-.555 2.048c0 1.413.722 2.662 1.823 3.393A4.093 4.093 0 012.8 7.15v.051c0 1.974 1.417 3.627 3.292 4.004a4.1 4.1 0 01-1.853.07c.522 1.614 2.037 2.792 3.833 2.825A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/arun-eswar-95b342298/" aria-label="LinkedIn" class="text-gray-400 hover:text-blue-700 transition">
+          <!-- Heroicon: LinkedIn -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-7 h-7">
+            <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.28c-.966 0-1.75-.79-1.75-1.76 0-.97.784-1.76 1.75-1.76s1.75.79 1.75 1.76c0 .97-.784 1.76-1.75 1.76zm13.5 11.28h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.89v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z"/>
+          </svg>
+        </a>
+        <a href="https://github.com/ARUNESWAR54" aria-label="GitHub" class="text-gray-400 hover:text-black transition">
+          <!-- Heroicon: GitHub -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-7 h-7">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.304-5.466-1.332-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.984-.399 3.003-.404 1.019.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.371.823 1.102.823 2.222v3.293c0 .322.218.694.825.576C20.565 21.796 24 17.297 24 12c0-6.63-5.373-12-12-12z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-gray-500 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50">
+    &copy; 2024 ARUNESWAR V. All rights reserved.
+  </footer>
+  <script>
+    // Typewriter effect for hero tagline
+    const typewriterTexts = [
+      "Transforming ideas into digital reality.",
+      "Crafting beautiful & functional web apps.",
+      "Let's build something amazing together!"
+    ];
+    let twIndex = 0, charIndex = 0, isDeleting = false;
+    const typewriterEl = document.getElementById('typewriter');
+    function type() {
+      const current = typewriterTexts[twIndex];
+      if (isDeleting) {
+        typewriterEl.textContent = current.substring(0, charIndex--);
+        if (charIndex < 0) {
+          isDeleting = false;
+          twIndex = (twIndex + 1) % typewriterTexts.length;
+          setTimeout(type, 600);
+        } else {
+          setTimeout(type, 40);
+        }
+      } else {
+        typewriterEl.textContent = current.substring(0, charIndex++);
+        if (charIndex > current.length) {
+          isDeleting = true;
+          setTimeout(type, 1200);
+        } else {
+          setTimeout(type, 80);
+        }
+      }
+    }
+    if(typewriterEl) type();
+
+    // Fade-in on scroll for hero and projects
+    function revealOnScroll() {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 80) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
+  </script>
+</body>
+</html> 
